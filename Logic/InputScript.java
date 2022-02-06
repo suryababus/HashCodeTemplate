@@ -13,30 +13,40 @@ public class  InputScript {
     String folderLocation = "InputFiles/";
     public void run() {
         System.out.println("InputScript - run ");
+        runForAllFiles();
+        // INFO: runFile("filename");
+    }
+
+    private void runFile(String fileName){
+        String inputFilePath = folderLocation+fileName;
+        File inputFile = new File(inputFilePath);
+        try {
+            InputStream inputSteam = new FileInputStream(inputFile);
+            InputStreamReader isReader = new InputStreamReader(inputSteam);
+            BufferedReader reader = new BufferedReader(isReader);
+            StringBuffer sb = new StringBuffer();
+            String str;
+            while((str = reader.readLine())!= null){
+                sb.append(str);
+            }
+            readInputs(fileName.substring(0, fileName.length()-4), sb.toString());
+            reader.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+
+        }
+    }
+    
+    private void runForAllFiles() {
         File directoryPath = new File(folderLocation);
         String contents[] = directoryPath.list();
         for(int i=0; i<contents.length; i++) {
-            String fileName = contents[i];
-            String inputFilePath = folderLocation+fileName;
-            File inputFile = new File(inputFilePath);
-            try {
-                InputStream inputSteam = new FileInputStream(inputFile);
-                InputStreamReader isReader = new InputStreamReader(inputSteam);
-                BufferedReader reader = new BufferedReader(isReader);
-                StringBuffer sb = new StringBuffer();
-                String str;
-                while((str = reader.readLine())!= null){
-                    sb.append(str);
-                }
-                readInputs(fileName.substring(0, fileName.length()-4), sb.toString());
-                reader.close();
-            } catch (Exception e) {
-                e.printStackTrace();
-            } finally {
-
-            }
+            runFile(contents[i]);
         }
     }
+
+
 
     LogicScript logicScript = new LogicScript();
     public void readInputs(String filename, String inputString){
@@ -49,7 +59,7 @@ public class  InputScript {
         Input input = new Input();
         // Hashcode: read inputs
 
-        
+
         
         return input;
     }
