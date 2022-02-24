@@ -10,7 +10,7 @@ import Modal.Input;
 
 public class  InputScript {
 
-    String folderLocation = "InputFiles/";
+    String folderLocation = "src/InputFiles/";
     public void run() {
         System.out.println("InputScript - run ");
         runForAllFiles();
@@ -20,7 +20,6 @@ public class  InputScript {
     private void runFile(String fileName){
         String inputFilePath = folderLocation+fileName;
         File inputFile = new File(inputFilePath);
-        //comment
         try {
             InputStream inputSteam = new FileInputStream(inputFile);
             InputStreamReader isReader = new InputStreamReader(inputSteam);
@@ -38,7 +37,7 @@ public class  InputScript {
 
         }
     }
-    
+
     private void runForAllFiles() {
         File directoryPath = new File(folderLocation);
         String contents[] = directoryPath.list();
@@ -47,21 +46,18 @@ public class  InputScript {
         }
     }
 
-
-
     LogicScript logicScript = new LogicScript();
     public void readInputs(String filename, String inputString){
-        Input input = readLogic(inputString);
-        input.inputFileName = filename;
+        Input input = readLogic(inputString, filename);
         logicScript.run(input);
     }
 
-    private Input readLogic(String inputString){
-        Input input = new Input();
+    private Input readLogic(String inputString, String filename){
+        Input input = new Input(filename);
         // Hashcode: read inputs
 
 
-        
+
         return input;
     }
 }

@@ -1,9 +1,9 @@
 package Modal;
 
 public class Output{
-   public String fileName;
+    public String fileName;
 
-   public Output(){
-       
-   }
+    public Output(){
+
+    }
 }
