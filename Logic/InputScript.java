@@ -19,8 +19,9 @@ public class  InputScript {
     String folderLocation = "InputFiles/";
     public void run() {
         System.out.println("InputScript - run ");
-        runForAllFiles();
-        // INFO: runFile("filename");
+        // runForAllFiles();
+        // INFO: runFile("a_an_example.in");
+        runFile("a_an_example.in.txt");
     }
 
     private void runFile(String fileName){
