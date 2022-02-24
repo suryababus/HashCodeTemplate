@@ -1,5 +1,7 @@
 package Modal;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 public class Project {
@@ -9,6 +11,7 @@ public class Project {
     public Integer bestBeforeDays;
     public Map<String , Integer> skillMap;
     public Integer totalWorkedDays = 0;
+    public List<Contributor> contributors = new ArrayList<>();
 
     public Project(String projectName, Integer projectDuration, Integer scoreAwardedForProjectCompletion, Integer bestBeforeDays, Map<String, Integer> skillMap) {
         this.projectName = projectName;

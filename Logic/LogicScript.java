@@ -16,8 +16,8 @@ public class LogicScript {
 
 
     void runProjectSchedular(){
-        // for each ongoing project increment running days.
-        // check project done and move to completed Projects
+        // for each ongoing project increment worked days.
+        // check project done (worked days === projectDuration) and move to completed Projects
         // increment skills for each contributor in the project and move contributors to available
     }
 
@@ -33,6 +33,10 @@ public class LogicScript {
         this.input = input;
         Output output = new Output();
         // Hashcode: write the business logic
+        
+
+
+
 
         scoringScript.calculateScore(input, output);
         outputScript.createOutputFile(output);
