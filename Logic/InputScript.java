@@ -20,6 +20,7 @@ public class  InputScript {
     private void runFile(String fileName){
         String inputFilePath = folderLocation+fileName;
         File inputFile = new File(inputFilePath);
+        //comment
         try {
             InputStream inputSteam = new FileInputStream(inputFile);
             InputStreamReader isReader = new InputStreamReader(inputSteam);
