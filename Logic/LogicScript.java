@@ -30,9 +30,9 @@ public class LogicScript {
             Project p = onGoingProjects.get(i);
             p.totalWorkedDays =  p.totalWorkedDays+1;
             if(p.totalWorkedDays==p.projectDuration-1){
-                for(Contributor c: p.contributors){
-                    // allContributors.get(c.)
-                    // need to increment skills for contributors
+                for(int j=0;j< p.contributors.size();j++){
+                    Contributor c = p.contributors.get(j);
+                    // allContributors.get(p.skills.get(j)).putIfAbsent(, value)
                     takenContributor.put(c.getName(), false);
                 }
                 completedProjects.add(p);
@@ -54,6 +54,7 @@ public class LogicScript {
         for(int i=0;i< awaitingProjects.size();i++){
             Project p = awaitingProjects.get(i);
             var assignedContributors = new ArrayList<Contributor>();
+            var skillList = new ArrayList<String>();
             boolean skillnotavailable = false;
             for(Entry<String, Integer> requiredSkill : p.skillMap.entrySet()){
 
@@ -67,6 +68,7 @@ public class LogicScript {
                         for(Contributor c: vc){
                             if(takenContributor.get(c.getName())==null || !takenContributor.get(c.getName())){
                                 assignedContributors.add(c);
+                                skillList.add(requiredSkill.getKey());
                                 assigned =true;
                                 break;
                             }
@@ -86,6 +88,7 @@ public class LogicScript {
                 continue;
             }else{
                 p.contributors = assignedContributors;
+                p.skills = skillList;
                 for(Contributor c: assignedContributors){
                     takenContributor.put(c.getName(), true);
                 }
@@ -104,7 +107,7 @@ public class LogicScript {
         // Hashcode: write the business logic
         awaitingProjects = input.projects;
         allContributors = Input.getSkillVsContributorMap(input.contributors);
-        Integer totalDaysToRun = 1000;
+        Integer totalDaysToRun = 10000;
         
         for(int i=0;(i<totalDaysToRun && (awaitingProjects.size()>0 || onGoingProjects.size()>0));i++){
             runProjectAssignSchedular();

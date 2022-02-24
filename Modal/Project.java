@@ -1,6 +1,7 @@
 package Modal;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -9,11 +10,12 @@ public class Project {
     public Integer projectDuration;
     public Integer scoreAwardedForProjectCompletion;
     public Integer bestBeforeDays;
-    public Map<String , Integer> skillMap;
+    public LinkedHashMap<String , Integer> skillMap;
     public Integer totalWorkedDays = 0;
+    public List<String> skills = new ArrayList<>();
     public List<Contributor> contributors = new ArrayList<>();
 
-    public Project(String projectName, Integer projectDuration, Integer scoreAwardedForProjectCompletion, Integer bestBeforeDays, Map<String, Integer> skillMap) {
+    public Project(String projectName, Integer projectDuration, Integer scoreAwardedForProjectCompletion, Integer bestBeforeDays, LinkedHashMap<String , Integer> skillMap) {
         this.projectName = projectName;
         this.projectDuration = projectDuration;
         this.scoreAwardedForProjectCompletion = scoreAwardedForProjectCompletion;
@@ -57,7 +59,7 @@ public class Project {
         return skillMap;
     }
 
-    public void setSkillMap(Map<String, Integer> skillMap) {
+    public void setSkillMap(LinkedHashMap<String, Integer> skillMap) {
         this.skillMap = skillMap;
     }
 

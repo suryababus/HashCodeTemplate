@@ -7,6 +7,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -19,9 +20,9 @@ public class  InputScript {
     String folderLocation = "InputFiles/";
     public void run() {
         System.out.println("InputScript - run ");
-        // runForAllFiles();
+        runForAllFiles();
         // INFO: runFile("a_an_example.in");
-        runFile("a_an_example.in.txt");
+        // runFile("a_an_example.in.txt");
     }
 
     private void runFile(String fileName){
@@ -53,10 +54,10 @@ public class  InputScript {
         }
     }
 
-    LogicScript logicScript = new LogicScript();
     public void readInputs(String filename, String inputString){
         Input input = readLogic(inputString, filename);
         HashMap<String, HashMap<Integer, List<Contributor>>> map = Input.getSkillVsContributorMap(input.contributors);
+        LogicScript logicScript = new LogicScript();
         logicScript.run(input);
     }
 
@@ -103,7 +104,7 @@ public class  InputScript {
             Integer skillsCount = Integer.parseInt(projectValueArray[4]);
             i++;
             int j = i;
-            Map<String, Integer> mp = new HashMap<>();
+            LinkedHashMap<String, Integer> mp = new LinkedHashMap<>();
             while(i < j + skillsCount){
                 String[] skillValueArray = projectValueArrayFull[i].split(" ");
                 mp.put(skillValueArray[0], Integer.parseInt(skillValueArray[1]));
