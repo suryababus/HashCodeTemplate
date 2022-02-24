@@ -31,6 +31,10 @@ public class LogicScript {
         System.out.println("LogicScript - run ");
 
         this.input = input;
+
+        /*
+            Set the fileName and the project list here
+         */
         Output output = new Output();
         // Hashcode: write the business logic
         
