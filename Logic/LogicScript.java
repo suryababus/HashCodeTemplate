@@ -26,15 +26,17 @@ public class LogicScript {
         // check project done (worked days === projectDuration) and move to completed Projects
         // increment skills for each contributor in the project and move contributors to available
 
-        for( Project p: onGoingProjects){
-            p.totalWorkedDays++;
+        for( int i =0;i< onGoingProjects.size();i++){
+            Project p = onGoingProjects.get(i);
+            p.totalWorkedDays =  p.totalWorkedDays+1;
             if(p.totalWorkedDays==p.projectDuration-1){
-                onGoingProjects.remove(p);
-                completedProjects.add(p);
                 for(Contributor c: p.contributors){
                     // allContributors.get(c.)
                     // need to increment skills for contributors
+                    takenContributor.put(c.getName(), false);
                 }
+                completedProjects.add(p);
+                onGoingProjects.remove(i);
             }
         }
 
@@ -49,23 +51,28 @@ public class LogicScript {
 
 
         
-        for(Project p: awaitingProjects){
+        for(int i=0;i< awaitingProjects.size();i++){
+            Project p = awaitingProjects.get(i);
             var assignedContributors = new ArrayList<Contributor>();
             boolean skillnotavailable = false;
             for(Entry<String, Integer> requiredSkill : p.skillMap.entrySet()){
 
                 Boolean assigned = false;
-                for(Entry<Integer, List<Contributor>> skilLevel : allContributors.get(requiredSkill.getKey()).entrySet()){
+                var levels = allContributors.get(requiredSkill.getKey()).entrySet();
+                for(Entry<Integer, List<Contributor>> skilLevel : levels){
                     Integer _requiredSkill = requiredSkill.getValue();
                     Integer _skilLevel = skilLevel.getKey();
                     if(_skilLevel >= _requiredSkill){
                         List<Contributor> vc = skilLevel.getValue();
                         for(Contributor c: vc){
-                            if(!takenContributor.get(c.getName())){
+                            if(takenContributor.get(c.getName())==null || !takenContributor.get(c.getName())){
                                 assignedContributors.add(c);
                                 assigned =true;
                                 break;
                             }
+                        }
+                        if(assigned){
+                            break;
                         }
                     }
                 }   
@@ -76,13 +83,13 @@ public class LogicScript {
                 }
             }
             if(skillnotavailable){
-                break;
+                continue;
             }else{
                 p.contributors = assignedContributors;
                 for(Contributor c: assignedContributors){
                     takenContributor.put(c.getName(), true);
                 }
-                awaitingProjects.remove(p);
+                awaitingProjects.remove(i);
                 onGoingProjects.add(p);
             }
         }
