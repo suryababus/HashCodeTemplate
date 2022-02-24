@@ -11,6 +11,7 @@ public class Project {
     public Integer bestBeforeDays;
     public Map<String , Integer> skillMap;
     public Integer totalWorkedDays = 0;
+    public Integer endDay;
     public List<Contributor> contributors = new ArrayList<>();
 
     public Project(String projectName, Integer projectDuration, Integer scoreAwardedForProjectCompletion, Integer bestBeforeDays, Map<String, Integer> skillMap) {
@@ -59,6 +60,10 @@ public class Project {
 
     public void setSkillMap(Map<String, Integer> skillMap) {
         this.skillMap = skillMap;
+    }
+    
+     public Integer getEndDay() {
+        return endDay;
     }
 
 }
