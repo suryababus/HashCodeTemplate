@@ -1,14 +1,15 @@
 package Modal;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class Contributor {
 
     private String name;
     private int noOfSkills;
-    private HashMap<String, Integer> skillMap;
+    private Map<String, Integer> skillMap;
 
-    public Contributor(String name, int noOfSkills, HashMap<String, Integer> skillMap) {
+    public Contributor(String name, int noOfSkills, Map<String, Integer> skillMap) {
         this.name = name;
         this.noOfSkills = noOfSkills;
         this.skillMap = skillMap;
@@ -30,7 +31,7 @@ public class Contributor {
         this.noOfSkills = noOfSkills;
     }
 
-    public HashMap<String, Integer> getSkillMap() {
+    public Map<String, Integer> getSkillMap() {
         return skillMap;
     }
 
