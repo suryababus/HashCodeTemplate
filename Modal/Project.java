@@ -3,11 +3,12 @@ package Modal;
 import java.util.Map;
 
 public class Project {
-    private String projectName;
-    private Integer projectDuration;
-    private Integer scoreAwardedForProjectCompletion;
-    private Integer bestBeforeDays;
-    private Map<String , Integer> skillMap;
+    public String projectName;
+    public Integer projectDuration;
+    public Integer scoreAwardedForProjectCompletion;
+    public Integer bestBeforeDays;
+    public Map<String , Integer> skillMap;
+    public Integer totalWorkedDays = 0;
 
     public Project(String projectName, Integer projectDuration, Integer scoreAwardedForProjectCompletion, Integer bestBeforeDays, Map<String, Integer> skillMap) {
         this.projectName = projectName;

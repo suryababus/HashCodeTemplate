@@ -10,7 +10,7 @@ import Modal.Input;
 
 public class  InputScript {
 
-    String folderLocation = "src/InputFiles/";
+    String folderLocation = "InputFiles/";
     public void run() {
         System.out.println("InputScript - run ");
         runForAllFiles();
